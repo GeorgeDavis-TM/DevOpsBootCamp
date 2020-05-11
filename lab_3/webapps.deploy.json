@@ -4,7 +4,7 @@
 	"parameters": {
 		"webAppName": {
 			"type": "string",
-			"defaultValue": "MyDevOpsBootcamp",
+			"defaultValue": "MyDevOpsBootcamp-apsfbbjvdqbho",
 			"metadata": {
 				"description": "Base name of the resource such as web app name and app service plan "
 			}

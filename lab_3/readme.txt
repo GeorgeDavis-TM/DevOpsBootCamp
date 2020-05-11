@@ -4,4 +4,4 @@ Deploy! Deploy! Deploy
 
 Twice would be nice.
 
-Third time's a charm ;)
+Third time's a charm :P

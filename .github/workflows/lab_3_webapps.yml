@@ -1,8 +1,7 @@
 on:
   push:
     branches:
-      - master
-      - appsec-demo
+      - appsec-aks-demo
     paths:
       - 'lab_3/**'
 

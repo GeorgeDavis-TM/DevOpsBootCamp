@@ -2,11 +2,11 @@ FROM node:12
 
 WORKDIR /usr/src/app
 
-COPY ./lab_3/app/packages*.json .
+COPY lab_3/app/packages*.json .
 
 RUN npm install
 
-COPY ./lab_3/app .
+COPY lab_3/app .
 
 ENV DB_NAME=${{secrets.DB_NAME}}
 ENV DB_HOST=${{secrets.DB_HOST}}

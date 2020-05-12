@@ -1,3 +1,5 @@
+require('trend_app_protect');
+
 const express = require("express");
 
 const port = 8080;

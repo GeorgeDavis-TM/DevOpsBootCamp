@@ -45,9 +45,18 @@
         <p class="lead">
           You have successfully deployed to Azure Web Apps using GitHub Actions!
         </p>
-            <img id="octodex" src="https://octodex.github.com/images/privateinvestocat.jpg" class="" alt="Private Investocat" />
+            <img id="octodex" src="https://octodex.github.com/images/privateinvestocat.jpg" class="" alt="Private Investocat" width="25%" height="25%"/>
         </p>
         </p>
+      </div>
+      <div>
+        <form action="/userEntry" method="POST">
+          <input type="text" name="user_entry" value="105 OR 1=1" maxlength="300" required/>
+          <input type="submit" name="btn_submit" value="Submit Entry"/>
+        </form>
+        <form action="/allUserEntries" method="GET">
+          <input type="submit" name="btn_submit" value="Get All User Entries"/>
+        </form>
       </div>
     </main>
     <footer class="footer mt-auto py-3 fixed-bottom">

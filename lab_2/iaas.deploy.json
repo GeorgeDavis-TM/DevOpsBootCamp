@@ -300,7 +300,7 @@
 				},
 			  "protectedSettings": {
 				"commandToExecute": "sh dsa_deploy.sh",
-				"fileUris": ["https://raw.githubusercontent.com/GeorgeDavis-TM/DevOpsBootCamp/master/lab_2/custom-scripts/dsa_deploy.sh"
+				"fileUris": ["https://raw.githubusercontent.com/GeorgeDavis-TM/DevOpsBootCamp/appsec-demo/lab_2/custom-scripts/dsa_deploy.sh"
 				]  
 			  }
 			}

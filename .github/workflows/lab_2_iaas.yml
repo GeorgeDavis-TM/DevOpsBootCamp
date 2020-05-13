@@ -2,6 +2,7 @@ on:
   push:
     branches:
       - master
+      - appsec-demo
     paths:
       - 'lab_2/**'
 

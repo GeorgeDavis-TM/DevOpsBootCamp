@@ -1,14 +1,13 @@
 on:
   push:
     branches:
-      - master
       - appsec-demo
     paths:
       - 'lab_3/**'
 
 name: Lab_3_WebApp
 env:
-  AZURE_WEBAPP_NAME: MyDevOpsBootcamp-apsfbbjvdqbho
+  AZURE_WEBAPP_NAME: DevOpsBootcamp-ezgfyxlpyz36w
   AZURE_WEBAPP_PACKAGE_PATH: ./lab_3/app
 
 jobs:
@@ -33,24 +32,24 @@ jobs:
           cd ${AZURE_WEBAPP_PACKAGE_PATH}
           npm install
 
-      - name: npm test
-        run: |
-          cd ${AZURE_WEBAPP_PACKAGE_PATH}
-          npm test
+#       - name: npm test
+#         run: |
+#           cd ${AZURE_WEBAPP_PACKAGE_PATH}
+#           npm test
 
-      - name: test pass message
-        if: success()
-        run: |
-          echo "npm tests passed! ready to deploy"
+#       - name: test pass message
+#         if: success()
+#         run: |
+#           echo "npm tests passed! ready to deploy"
 
-      - name: test fail message
-        if: failure()
-        run: |
-          echo "npm tests failed! please check your code"
+#       - name: test fail message
+#         if: failure()
+#         run: |
+#           echo "npm tests failed! please check your code"
 
       - name: Deploy to Azure WebApp
         uses: azure/webapps-deploy@v2
-        if: success()
+#         if: success()
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}

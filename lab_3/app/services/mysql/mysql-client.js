@@ -14,6 +14,7 @@ var connection = mysql.createConnection({
 
 //connect to database
 connection.connect((err) =>{
+    console.log("\n\n\tAttempting to connect to " + DB_NAME + "@" + DB_HOST + ":3306...");
     if(err) throw err;
     console.log('\n\n\tMySQL Connected!');
 });

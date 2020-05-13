@@ -279,7 +279,32 @@
 					}
 				]
 			}
-		}
+		},
+		{
+			"name": "config-app",
+			"type": "Microsoft.Compute/virtualMachines/extensions",
+			"location": "[resourceGroup().location]",
+			"apiVersion": "2019-03-01",
+			"dependsOn": [
+			  "[concat('Microsoft.Compute/virtualMachines/', concat(variables('vmName'),copyindex()))]"
+			],
+			"tags": {
+			  "displayName": "config-app"
+			},
+			"properties": {
+			  "publisher": "Microsoft.Azure.Extensions",
+			  "type": "CustomScript",
+			  "typeHandlerVersion": "2.1",
+			  "autoUpgradeMinorVersion": true,
+			  "settings": {
+				},
+			  "protectedSettings": {
+				"commandToExecute": "sh dsa_deploy.sh",
+				"fileUris": ["https://raw.githubusercontent.com/GeorgeDavis-TM/DevOpsBootCamp/master/lab_2/custom-scripts/dsa_deploy.sh"
+				]  
+			  }
+			}
+		  }
 	],
 	"outputs": {}
 }

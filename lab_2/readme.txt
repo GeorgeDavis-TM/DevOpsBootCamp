@@ -1,3 +1,3 @@
 This file can be modified to trigger workflow execution
 
-Deploy Azure Resources with DSA
+Deploy Azure Resources without DSA

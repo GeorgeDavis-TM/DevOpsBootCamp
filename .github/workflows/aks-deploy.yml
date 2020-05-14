@@ -25,16 +25,28 @@ jobs:
       with:
         azcliversion: 2.0.72
         inlineScript: |
-          az extension update --name aks-preview
           az group create --name DevOpsBootCampRG --location eastus
-          az acr create --resource-group DevOpsBootCampRG --name DevOpsBootCampRGCR --sku Basic
-          az aks create \
-            --resource-group DevOpsBootCampRG \
-            --name DevOpsBootCampRGAKS \
-            --node-count 1 \
-            --generate-ssh-keys \
-            --attach-acr DevOpsBootCampRGCR
-          az acr login --name DevOpsBootCampRGCR
+                  
+    - name: Create ACR
+      id: create-acr
+      run: |
+        az acr create -n DevOpsBootCampRGCR -g DevOpsBootCampRG --location "East US" --sku Basic --admin-enabled
+        echo "::set-output name=acr_username::`az acr credential show -n DevOpsBootCampRGCR --query username | xargs`"
+        echo "::set-output name=acr_password::`az acr credential show -n DevOpsBootCampRGCR --query passwords[0].value | xargs`"
+        echo "::add-mask::`az acr credential show -n DevOpsBootCampRGCR --query passwords[0].value | xargs`"
+
+    - uses: azure/docker-login@v1
+      with:
+        login-server: cloudonecontainerregistry.azurecr.io
+        username: ${{ steps.create-acr.outputs.acr_username }}
+        password: ${{ steps.create-acr.outputs.acr_password }}
+
+    - name: Azure CLI script
+      uses: azure/CLI@v1
+      with:
+        azcliversion: 2.0.72
+        inlineScript: |
+          az aks create --resource-group DevOpsBootCampRG --name DevOpsBootCampRGAKS --node-count 1 --generate-ssh-keys --attach-acr DevOpsBootCampRGCR
           docker build -t DevOpsBootCampRGCR/node-tm-appsec-demo
           docker images
           docker push DevOpsBootCampRGCR/node-tm-appsec-demo:latest

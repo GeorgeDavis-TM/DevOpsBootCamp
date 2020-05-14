@@ -3,7 +3,7 @@ on:
     branches:
       - appsec-aks-demo
     paths:
-      - 'lab_3/**'
+      - 'lab_1/**'
 
 name: Lab_3_WebApp
 env:

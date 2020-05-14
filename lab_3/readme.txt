@@ -5,3 +5,5 @@ Deploy! Deploy! Deploy
 Twice would be nice.
 
 Third time's a charm :P
+
+New approach with AKS and Docker Image

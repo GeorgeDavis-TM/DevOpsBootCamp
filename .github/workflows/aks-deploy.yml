@@ -57,5 +57,5 @@ jobs:
     - name: Docker Run
       id: docker-run
       run: |
-          docker run -d DevOpsBootCampRGCR/node-tm-appsec-demo -p 8080:8080
+          docker run -d devopsbootcamprgcr.azurecr.io/node-tm-appsec-demo -p 8080:8080
           docker ps -a

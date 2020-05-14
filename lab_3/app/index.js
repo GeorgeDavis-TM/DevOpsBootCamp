@@ -4,9 +4,9 @@ const express = require("express");
 
 const db = "sqlite";
 
-// const mysql = require('./services/mysql/mysql-client.js');
-const sqlite = require('./services/sqlite/sqlite.js');
-sqlite.initDB();
+const mysql = require('./services/mysql/mysql-client.js');
+// const sqlite = require('./services/sqlite/sqlite.js');
+// sqlite.initDB();
 
 const port = 8080;
 
@@ -23,17 +23,17 @@ app.get("/test", (req, res) => {
 
 app.get("/allUserEntries", (req, res) => {
   // console.log(db);
-  // if (db == "mysql")
-  //   mysql.getAllUserEntries();
-  // else
+  if (db === "mysql")
+    mysql.getAllUserEntries();
+  else
     sqlite.getAllUserEntries();
   res.status(200).send("Hello, User Entries!");
 });
 
 app.post("/userEntry", (req, res) => {
-  // if (db == "mysql")
-  //   mysql.postUserEntry(req.body.user_entry);
-  // else
+  if (db === "mysql")
+    mysql.postUserEntry(req.body.user_entry);
+  else
     sqlite.postUserEntry(req.body.user_entry);
   res.status(200).send("Hello, New Entry!");
 });

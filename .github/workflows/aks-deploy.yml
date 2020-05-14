@@ -37,7 +37,7 @@ jobs:
 
     - uses: azure/docker-login@v1
       with:
-        login-server: cloudonecontainerregistry.azurecr.io
+        login-server: devopsbootcamprgcr.azurecr.io
         username: ${{ steps.create-acr.outputs.acr_username }}
         password: ${{ steps.create-acr.outputs.acr_password }}
 
@@ -46,7 +46,7 @@ jobs:
       with:
         azcliversion: 2.0.72
         inlineScript: |
-          az aks create --resource-group DevOpsBootCampRG --name DevOpsBootCampRGAKS --node-count 1 --generate-ssh-keys --attach-acr DevOpsBootCampRGCR
+          az aks create --resource-group DevOpsBootCampRG --name DevOpsBootCampRGAKS --node-count 1 --generate-ssh-keys
           docker build -t DevOpsBootCampRGCR/node-tm-appsec-demo
           docker images
           docker push DevOpsBootCampRGCR/node-tm-appsec-demo:latest

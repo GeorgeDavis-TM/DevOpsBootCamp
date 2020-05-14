@@ -46,10 +46,24 @@ jobs:
       with:
         azcliversion: 2.0.72
         inlineScript: |
-          az aks create --resource-group DevOpsBootCampRG --name DevOpsBootCampRGAKS --node-count 1 --generate-ssh-keys
+          az aks create --resource-group DevOpsBootCampRG --name DevOpsBootCampRGAKS --node-count 1
+
+    - name: Build and push image to ACR
+      id: build-image
+      run: |
           docker build -t DevOpsBootCampRGCR/node-tm-appsec-demo
           docker images
           docker push DevOpsBootCampRGCR/node-tm-appsec-demo:latest
+
+    - name: Azure CLI script
+      uses: azure/CLI@v1
+      with:
+        azcliversion: 2.0.72
+        inlineScript: |
           az acr repository list --name DevOpsBootCampRGCR --output table
+    
+    - name: Docker Run
+      id: docker-run
+      run: |
           docker run -d DevOpsBootCampRGCR/node-tm-appsec-demo -p 8080:8080
           docker ps -a

@@ -1,0 +1,44 @@
+on:
+  push:
+    branches:
+      - appsec-aks-demo
+    paths:
+      - 'lab_3/**'
+
+name: Lab_3_WebApp on AKS
+
+jobs:
+
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:    
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        
+    - name: Checkout
+      uses: actions/checkout@v2.1.0
+    
+    - name: Azure CLI script
+      uses: azure/CLI@v1
+      with:
+        azcliversion: 2.0.72
+        inlineScript: |
+          az group create --name DevOpsBootCamp-RG --location eastus
+          az acr create --resource-group DevOpsBootCamp-RG --name DevOpsBootCamp-RG-CR --sku Basic
+          az aks create \
+            --resource-group DevOpsBootCamp-RG \
+            --name DevOpsBootCamp-RG-AKS \
+            --node-count 1 \
+            --generate-ssh-keys \
+            --attach-acr DevOpsBootCamp-RG-CR
+          az acr login --name DevOpsBootCamp-RG-CR
+          docker build -t DevOpsBootCamp-RG-CR/node-tm-appsec-demo
+          docker images
+          docker push DevOpsBootCamp-RG-CR/node-tm-appsec-demo:latest
+          az acr repository list --name DevOpsBootCamp-RG-CR --output table
+          docker run -d DevOpsBootCamp-RG-CR/node-tm-appsec-demo -p 8080:8080
+          docker ps -a
+          
+          

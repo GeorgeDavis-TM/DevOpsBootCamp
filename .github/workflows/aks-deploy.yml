@@ -25,6 +25,7 @@ jobs:
       with:
         azcliversion: 2.0.72
         inlineScript: |
+          az extension update --name aks-preview
           az group create --name DevOpsBootCampRG --location eastus
           az acr create --resource-group DevOpsBootCampRG --name DevOpsBootCampRGCR --sku Basic
           az aks create \
@@ -40,5 +41,3 @@ jobs:
           az acr repository list --name DevOpsBootCampRGCR --output table
           docker run -d DevOpsBootCampRGCR/node-tm-appsec-demo -p 8080:8080
           docker ps -a
-          
-          

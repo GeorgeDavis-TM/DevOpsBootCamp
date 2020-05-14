@@ -51,9 +51,8 @@ jobs:
     - name: Build and push image to ACR
       id: build-image
       run: |
-          docker build -t DevOpsBootCampRGCR/node-tm-appsec-demo
-          docker images
-          docker push DevOpsBootCampRGCR/node-tm-appsec-demo:latest
+          docker build "$GITHUB_WORKSPACE/" -f  "Dockerfile" -t devopsbootcamprgcr.azurecr.io/node-tm-appsec-demo:${{ github.sha }}
+          docker push devopsbootcamprgcr.azurecr.io/node-tm-appsec-demo:${{ github.sha }}
 
     - name: Azure CLI script
       uses: azure/CLI@v1

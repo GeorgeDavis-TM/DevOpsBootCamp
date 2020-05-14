@@ -41,13 +41,6 @@ jobs:
         username: ${{ steps.create-acr.outputs.acr_username }}
         password: ${{ steps.create-acr.outputs.acr_password }}
 
-    - name: Azure CLI script
-      uses: azure/CLI@v1
-      with:
-        azcliversion: 2.0.72
-        inlineScript: |
-          az aks create --resource-group DevOpsBootCampRG --name DevOpsBootCampRGAKS --node-count 1 --generate-ssh-keys
-
     - name: Build and push image to ACR
       id: build-image
       run: |

@@ -6,4 +6,4 @@ Twice would be nice.
 
 Third time's a charm :P
 
-New approach with AKS and Docker Image (Attempt #7)
+New approach with AKS and Docker Image (Attempt #8)

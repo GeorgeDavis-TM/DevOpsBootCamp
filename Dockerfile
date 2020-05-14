@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 
 COPY lab_3/app/package*.json .
 
-RUN sudo npm install
+RUN npm install
 
 COPY lab_3/app .
 

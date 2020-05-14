@@ -46,7 +46,7 @@ jobs:
       with:
         azcliversion: 2.0.72
         inlineScript: |
-          az aks create --resource-group DevOpsBootCampRG --name DevOpsBootCampRGAKS --node-count 1
+          az aks create --resource-group DevOpsBootCampRG --name DevOpsBootCampRGAKS --node-count 1 --generate-ssh-keys
 
     - name: Build and push image to ACR
       id: build-image

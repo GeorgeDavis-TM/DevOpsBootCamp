@@ -44,7 +44,7 @@ jobs:
     - name: Build and push image to ACR
       id: build-image
       run: |
-          docker build "$GITHUB_WORKSPACE/" -f  "Dockerfile" -t devopsbootcamprgcr.azurecr.io/node-tm-appsec-demo:${{ github.sha }}
+          docker build "$GITHUB_WORKSPACE/" -f  "Dockerfile" -t devopsbootcamprgcr.azurecr.io/node-tm-appsec-demo:${{ github.sha }}          
           docker push devopsbootcamprgcr.azurecr.io/node-tm-appsec-demo:${{ github.sha }}
 
     - name: Azure CLI script
@@ -57,6 +57,6 @@ jobs:
     - name: Docker Run
       id: docker-run
       run: |
-          docker pull devopsbootcamprgcr.azurecr.io/node-tm-appsec-demo          
+          docker pull devopsbootcamprgcr.azurecr.io/node-tm-appsec-demo:${{ github.sha }}       
           docker run -it --rm -p 8080:8080 devopsbootcamprgcr.azurecr.io/node-tm-appsec-demo
           docker ps -a

@@ -2,7 +2,12 @@ require('trend_app_protect');
 
 const express = require("express");
 
-const mysql = require('./services/mysql/mysql-client.js')
+const db = "sqlite";
+
+if (db == "mysql")
+  const mysql = require('./services/mysql/mysql-client.js');
+else
+  const sqlite = require('./services/sqlite/sqlite.js');
 
 const port = 8080;
 
@@ -18,12 +23,18 @@ app.get("/test", (req, res) => {
 });
 
 app.get("/allUserEntries", (req, res) => {
-  mysql.getAllUserEntries();
+  if (db == "mysql")
+    mysql.getAllUserEntries();
+  else
+    sqlite.getAllUserEntries();
   res.status(200).send("Hello, User Entries!");
 });
 
 app.post("/userEntry", (req, res) => {
-  mysql.postUserEntry(req.body.user_entry);
+  if (db == "mysql")
+    mysql.postUserEntry(req.body.user_entry);
+  else
+    sqlite.postUserEntry(req.body.user_entry);
   res.status(200).send("Hello, New Entry!");
 });
 

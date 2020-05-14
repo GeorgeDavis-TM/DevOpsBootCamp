@@ -25,20 +25,20 @@ jobs:
       with:
         azcliversion: 2.0.72
         inlineScript: |
-          az group create --name DevOpsBootCamp-RG --location eastus
-          az acr create --resource-group DevOpsBootCamp-RG --name DevOpsBootCamp-RG-CR --sku Basic
+          az group create --name DevOpsBootCampRG --location eastus
+          az acr create --resource-group DevOpsBootCampRG --name DevOpsBootCampRGCR --sku Basic
           az aks create \
-            --resource-group DevOpsBootCamp-RG \
-            --name DevOpsBootCamp-RG-AKS \
+            --resource-group DevOpsBootCampRG \
+            --name DevOpsBootCampRGAKS \
             --node-count 1 \
             --generate-ssh-keys \
-            --attach-acr DevOpsBootCamp-RG-CR
-          az acr login --name DevOpsBootCamp-RG-CR
-          docker build -t DevOpsBootCamp-RG-CR/node-tm-appsec-demo
+            --attach-acr DevOpsBootCampRGCR
+          az acr login --name DevOpsBootCampRGCR
+          docker build -t DevOpsBootCampRGCR/node-tm-appsec-demo
           docker images
-          docker push DevOpsBootCamp-RG-CR/node-tm-appsec-demo:latest
-          az acr repository list --name DevOpsBootCamp-RG-CR --output table
-          docker run -d DevOpsBootCamp-RG-CR/node-tm-appsec-demo -p 8080:8080
+          docker push DevOpsBootCampRGCR/node-tm-appsec-demo:latest
+          az acr repository list --name DevOpsBootCampRGCR --output table
+          docker run -d DevOpsBootCampRGCR/node-tm-appsec-demo -p 8080:8080
           docker ps -a
           
           

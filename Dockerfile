@@ -11,7 +11,7 @@ COPY lab_3/app .
 EXPOSE 8080
 
 ENV DB_NAME=tm_appsec_demo
-ENV DB_HOST=ec2-18-219-86-69.us-east-2.compute.amazonaws.com
+ENV DB_HOST=52.191.213.103
 ENV DB_USER=tm_db_user
 ENV DB_PASSWORD=1P@ssword2
 

@@ -281,27 +281,27 @@
 			}
 		},
 		{
-			"name": "config-app",
 			"type": "Microsoft.Compute/virtualMachines/extensions",
+			"name": "CustomScriptExtension",
+			"apiVersion": "2015-06-15",
 			"location": "[resourceGroup().location]",
-			"apiVersion": "2019-03-01",
-			"tags": {
-			  "displayName": "config-app"
-			},
+			"dependsOn": [
+				"[parameters('webServerNames')[copyIndex()]]"
+			],
 			"properties": {
-			  "publisher": "Microsoft.Azure.Extensions",
-			  "type": "CustomScript",
-			  "typeHandlerVersion": "2.1",
-			  "autoUpgradeMinorVersion": true,
-			  "settings": {
+				"publisher": "Microsoft.Azure.Extensions",
+				"type": "CustomScript",
+				"typeHandlerVersion": "2.0",
+				"autoUpgradeMinorVersion": true,
+				"settings": {
+					"commandToExecute": "./dsa_deploy.sh",					
+					"fileUris": [
+						"https://raw.githubusercontent.com/GeorgeDavis-TM/DevOpsBootCamp/appsec-demo/lab_2/custom-scripts/dsa_deploy.sh"
+					]
 				},
-			  "protectedSettings": {
-				"commandToExecute": "sh dsa_deploy.sh",
-				"fileUris": ["https://raw.githubusercontent.com/GeorgeDavis-TM/DevOpsBootCamp/appsec-demo/lab_2/custom-scripts/dsa_deploy.sh"
-				]  
-			  }
+				"protectedSettings": {}
 			}
-		  }
+		}
 	],
 	"outputs": {}
 }

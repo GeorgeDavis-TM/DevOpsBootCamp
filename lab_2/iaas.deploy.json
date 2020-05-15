@@ -198,7 +198,30 @@
 					"id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('webAvailSetName'))]"
 				}
 			},
-			"resources": []
+			"resources": [
+				{
+					"type": "extensions",
+					"name": "CustomScriptExtension",
+					"apiVersion": "2015-06-15",
+					"location": "[resourceGroup().location]",
+					"dependsOn": [
+						"[parameters('webServerNames')[copyIndex()]]"
+					],
+					"properties": {
+						"publisher": "Microsoft.Azure.Extensions",
+						"type": "CustomScript",
+						"typeHandlerVersion": "2.0",
+						"autoUpgradeMinorVersion": true,
+						"settings": {
+							"commandToExecute": "./dsa_deploy.sh",
+							"fileUris": [
+								"https://raw.githubusercontent.com/GeorgeDavis-TM/DevOpsBootCamp/appsec-demo/lab_2/custom-scripts/dsa_deploy.sh"
+							]
+						},
+						"protectedSettings": {}
+					}
+				}
+			]
 		},
 		{
 			"type": "Microsoft.Compute/availabilitySets",
@@ -278,28 +301,6 @@
 						}
 					}
 				]
-			}
-		},
-		{
-			"type": "extensions",
-			"name": "CustomScriptExtension",
-			"apiVersion": "2015-06-15",
-			"location": "[resourceGroup().location]",
-			"dependsOn": [
-				"[parameters('webServerNames')[copyIndex()]]"
-			],
-			"properties": {
-				"publisher": "Microsoft.Azure.Extensions",
-				"type": "CustomScript",
-				"typeHandlerVersion": "2.0",
-				"autoUpgradeMinorVersion": true,
-				"settings": {
-					"commandToExecute": "./dsa_deploy.sh",
-					"fileUris": [
-						"https://raw.githubusercontent.com/GeorgeDavis-TM/DevOpsBootCamp/appsec-demo/lab_2/custom-scripts/dsa_deploy.sh"
-					]
-				},
-				"protectedSettings": {}
 			}
 		}
 	],

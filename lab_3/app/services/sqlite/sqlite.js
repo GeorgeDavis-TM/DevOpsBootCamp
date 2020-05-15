@@ -4,7 +4,7 @@ const db = new sqlite3.Database('tm-appsec-demo.db');
 
 exports.initDB = () => {
     db.serialize(function () {
-        db.run("CREATE TABLE IF NOT EXISTS tbl_user_entries(entry_id INT AUTOINCREMENT PRIMARY KEY, user_entries VARCHAR(300), entry_timestamp TIMESTAMP);");        
+        db.run("CREATE TABLE IF NOT EXISTS tbl_user_entries (entry_id INTEGER PRIMARY KEY AUTOINCREMENT, user_entries VARCHAR(300), entry_timestamp DATETIME DEFAULT CURRENT_TIMESTAMP);");        
     });
 };
 
@@ -25,7 +25,7 @@ exports.getAllUserEntries = () => {
             }
             rows.forEach((row) => {
                 // console.log(row);
-                console.log(row.user_entries + " - " + row.entry_timestamp);
+                console.log(row.user_entries);
             });
         });
     });

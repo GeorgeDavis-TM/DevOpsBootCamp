@@ -5,9 +5,9 @@ const express = require("express");
 const db = "sqlite";
 
 if (db == "mysql")
-  const mysql = require('./services/mysql/mysql-client.js');
+  var mysql = require('./services/mysql/mysql-client.js');
 else
-  const sqlite = require('./services/sqlite/sqlite.js');
+  var sqlite = require('./services/sqlite/sqlite.js');
 
 const port = 8080;
 

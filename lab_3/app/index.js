@@ -24,7 +24,7 @@ app.get("/allUserEntries", (req, res) => {
 
 app.post("/userEntry", (req, res) => {
   mysql.postUserEntry(req.body.user_entry);
-  res.status(200).send("Hello, New Entry!");
+  res.status(200).send("Hello, User!");
 });
 
 module.exports = app.listen(port, () => {

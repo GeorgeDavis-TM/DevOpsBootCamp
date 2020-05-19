@@ -19,7 +19,7 @@ app.get("/test", (req, res) => {
 
 app.get("/allUserEntries", (req, res) => {
   mysql.getAllUserEntries();
-  res.status(200).send("Hello, User Entries!");
+  res.status(200).send("Hello, User!");
 });
 
 app.post("/userEntry", (req, res) => {

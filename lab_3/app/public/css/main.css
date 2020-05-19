@@ -6,12 +6,16 @@ p {
   margin: 1em;
 }
 
+.bg-cloudpays {
+  background-color: #aaa;
+}
+
 .bg-orange {
-  background-color: #ffa500;
+  background-color: #aaa;
 }
 
 .bg-orange-softchoice {
-  background-color: #f3590f;
+  background-color: #aaa;
 }
 
 .footer {
@@ -21,4 +25,8 @@ p {
 .footer > .container > ul > li {
   margin-left: auto;
   margin-right: auto;
+}
+
+.mt-10 {
+  margin-top: 6rem;
 }

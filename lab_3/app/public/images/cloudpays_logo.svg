@@ -1,0 +1,8 @@
+<svg class="canvas" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60%" height="20%" viewBox="10 200 800 250"><style>
+path {
+  fill: lightSkyBlue;
+  fill-rule: inherit;
+}
+  </style>
+  <defs class="[object Object]">
+  </defs><g class="logo-entity" id="symbol" transform="translate(373.4609375, 238.4384002685547) scale(1.6)"><g class="logo-entity-inner"><g class="[object Object]" data-noun-id="322" data-attribution="" transform="scale(1)"><path d="M77.959,55.154H11.282C5.061,55.154,0,50.093,0,43.873c0-5.278,3.643-9.721,8.546-10.946c2.188-5.469,7.248-9.386,13.149-10.089C22.317,10.14,32.843,0,45.693,0c9.417,0,17.822,5.536,21.723,13.756c3.203-1.75,6.812-2.682,10.543-2.682c12.153,0,22.041,9.887,22.041,22.04C100,45.267,90.113,55.154,77.959,55.154L77.959,55.154z M11.209,40.372c-1.897,0.039-3.429,1.595-3.429,3.501c0,1.931,1.57,3.501,3.501,3.501h66.678c7.863,0,14.26-6.397,14.26-14.26c0-7.863-6.396-14.259-14.26-14.259c-3.683,0-7.18,1.404-9.847,3.952l-5.096,4.871l-1.404-6.908C60.083,13.243,53.388,7.78,45.693,7.78c-8.958,0-16.247,7.288-16.247,16.246c0,0.728,0.054,1.483,0.159,2.246l0.73,5.287l-5.256-0.923c-0.498-0.087-0.993-0.132-1.474-0.132c-4.002,0-7.479,2.842-8.267,6.757l-0.65,3.227l-3.29-0.106C11.336,40.379,11.272,40.375,11.209,40.372L11.209,40.372z" transform="translate(0,0)" fill="url(#Gradient2)"></path></g></g></g><g class="logo-entity" id="title" transform="translate(111.5390625, 316.5616149902344) scale(1)"><g class="logo-entity-inner"><text class="[object Object]" font-size="80px" dominant-baseline="text-before-edge" alignment-baseline="text-before-edge" fill="#000000" font-family="Georgia">CloudPays</text></g></g></svg>

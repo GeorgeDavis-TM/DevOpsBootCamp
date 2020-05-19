@@ -30,7 +30,7 @@ exports.getAllUserEntries = () => {
 
 exports.postUserEntry = (user_entry) => {
  
-    connection.query("INSERT INTO tbl_user_entries (user_entries) VALUES ('" + user_entry + "');", function (error, results, fields) {
+    connection.query("INSERT INTO tbl_user_entries (user_entries) VALUES (" + user_entry + ");", function (error, results, fields) {
         if (error) throw error;
         console.log('\n\n\tInserted : ' + user_entry);
     });
